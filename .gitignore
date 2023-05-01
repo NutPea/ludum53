@@ -1,4 +1,4 @@
-###
+ ###
 # Unity folders and files
 ###
 [Aa]ssets/AssetStoreTools*
@@ -12,6 +12,8 @@
 sysinfo.txt
 # Unity3D generated meta files
 *.pidb.meta
+*.shadercompiler-UnityShaderCompiler.exe6.log
+*.log
 
 ###
 # VS/MD solution and project files
