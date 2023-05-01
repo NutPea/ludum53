@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1097,6 +1097,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 085dc84be9b24654bac1020705b050db, type: 3}
+--- !u!1 &1389197700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389197702}
+  - component: {fileID: 1389197701}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1389197701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389197700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d09e3bd359ae944a7552d95cb0212a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerPrefabs: []
+  enemyObstaclePrefabs: []
+  arrivedCirclePrefab: {fileID: 0}
+  spawnpoints: []
+  player: {fileID: 0}
+  minDistanceFromCustomerToPlayer: 10
+  maxDistanceFromCustomerToPlayer: 20
+  minDistanceBetweenCustomerandArrive: 50
+  maxDistanceBetweenCustomerandArrive: 100
+--- !u!4 &1389197702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389197700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.713165, y: 16.333786, z: -18.789274}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440891295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,18 +1440,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 864881980843697422, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
-      propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 864881980843697422, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
-      propertyPath: m_ForwardFriction.m_AsymptoteValue
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 864881980843697422, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
-      propertyPath: m_SidewaysFriction.m_AsymptoteValue
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 864881980845569806, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1447,43 +1488,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
-    - target: {fileID: 864881980845569807, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 864881980845569808, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
---- !u!1 &864881980804844546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 864881980845569807, guid: deb9c2a597c5d2649aa3059d207ea071, type: 3}
-  m_PrefabInstance: {fileID: 864881980804844545}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &864881980804844547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864881980804844546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf262cd97cb0f0749b6ba95743127b84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentPointAmount: 0
---- !u!114 &864881980804844548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864881980804844546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1504d0b2697bcd34fa6c08f7858ab0e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

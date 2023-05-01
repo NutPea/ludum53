@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 6657644821906535359}
   - component: {fileID: 8366056129125606517}
   m_Layer: 0
-  m_Name: Car
+  m_Name: Car =)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,6 +475,9 @@ MonoBehaviour:
   currentTimer: 0
   amountToAddPerPassenger: 10
   OnCountDownFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCountDownUpdate:
     m_PersistentCalls:
       m_Calls: []
   OnTimeUpdate:
