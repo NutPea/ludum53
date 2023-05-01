@@ -13,7 +13,7 @@ public class CarPassengerPickUpHandler : MonoBehaviour
     public Transform carPassengerPosition;
     [HideInInspector]public CustomerHandler currentCustomerHandler;
 
-    [HideInInspector] public UnityEvent<TargetLocationMarker> OnPickUpCustomer = new();
+    [HideInInspector] public UnityEvent OnPickUpCustomer = new();
     [HideInInspector] public UnityEvent OnDropCustomer = new();
     public UnityEvent<bool> OnHitEnemy = new();
 
