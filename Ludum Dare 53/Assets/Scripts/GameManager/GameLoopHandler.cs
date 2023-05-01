@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class GameLoopHandler : MonoBehaviour
@@ -23,6 +24,11 @@ public class GameLoopHandler : MonoBehaviour
     public UnityEvent<GameObject> OnArriveCircleChange = new();
     public UnityEvent<TargetLocationMarker> OnNewLocationMarker = new();
 
+    public float amountOfEnemys = 40;
+    public float minSpawnDistanceOfEnemys = 20f;
+    public float maxSpawnDIstanceEnemys = 40f;
+
+
     void Start()
     {
         if(!player)
@@ -32,6 +38,7 @@ public class GameLoopHandler : MonoBehaviour
         player.GetComponent<CarTimeHandler>().OnCountDownFinished.AddListener(SpawnNewCostumer);
         carPassengerHandler = player.GetComponent<CarPassengerPickUpHandler>();
         carPassengerHandler.OnDropCustomer.AddListener(SpawnNewCostumer);
+        SpawnEnemysNew();
     }
 
     // Update is called once per frame
@@ -87,6 +94,36 @@ public class GameLoopHandler : MonoBehaviour
         return spawnpoints[0];
     }
 
+    public void SpawnEnemysNew()
+    {
+        for(int i = 0; i< amountOfEnemys; i++)
+        {
+            int randomeSPawnpointIndex = Random.Range(0, spawnpoints.Count);
+
+            Vector3 spawnPosition = spawnpoints[randomeSPawnpointIndex].position;
+            if (RandomPoint(spawnPosition, minSpawnDistanceOfEnemys, maxDistanceBetweenCustomerandArrive, out spawnPosition))
+            {
+                int randomeEnemyIndex = Random.Range(0, enemyObstaclePrefabs.Count);
+                GameObject spawnedEnemy = GameObject.Instantiate(enemyObstaclePrefabs[randomeEnemyIndex], spawnPosition, Quaternion.identity);
+            }
+        }
+    }
+
+    bool RandomPoint(Vector3 center,float minRange ,float maxRange, out Vector3 result)
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            Vector3 randomPoint = center + Random.insideUnitSphere * Random.Range(minRange,maxRange);
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                result = hit.position;
+                return true;
+            }
+        }
+        result = Vector3.zero;
+        return false;
+    }
 
     private void OnDrawGizmos() {
         if(spawnpoints.Count > 0) {
@@ -95,5 +132,6 @@ public class GameLoopHandler : MonoBehaviour
                 Gizmos.DrawSphere(spawnPoint.position, 0.25f);
             }
         }
+        
     }
 }
