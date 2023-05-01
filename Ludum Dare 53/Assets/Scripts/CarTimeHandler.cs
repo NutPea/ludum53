@@ -8,6 +8,7 @@ public class CarTimeHandler : MonoBehaviour
 
     
     public float countDownTimer;
+    private float currentCountDownTimer;
 
     public float startTimer = 10f;
     public float currentTimer = 0;
@@ -15,6 +16,7 @@ public class CarTimeHandler : MonoBehaviour
     public float amountToAddPerPassenger = 10f;
 
     [HideInInspector]public UnityEvent OnCountDownFinished = new();
+    [HideInInspector] public UnityEvent<int> OnCountDownUpdate = new ();
 
     [HideInInspector]public UnityEvent<string> OnTimeUpdate = new();
     [HideInInspector] public UnityEvent<string> OnAddTimeUpdate = new();
@@ -29,13 +31,16 @@ public class CarTimeHandler : MonoBehaviour
         pickUpHandler = GetComponent<CarPassengerPickUpHandler>();
         pickUpHandler.OnDropCustomer.AddListener(AddTime);
         pickUpHandler.OnPickUpCustomer.AddListener(AddTime);
+        currentCountDownTimer = countDownTimer;
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        //ToDo:Add CountDown
 
+        
         if (hasBeenCountDown)
         {
             if(currentTimer < 0) {
@@ -46,6 +51,19 @@ public class CarTimeHandler : MonoBehaviour
             else{
                 currentTimer -= Time.deltaTime;
                 OnTimeUpdate.Invoke(currentTimer.ToString("#,00"));
+            }
+        }
+        else
+        {
+            if(currentCountDownTimer < 0)
+            {
+                hasBeenCountDown = true;
+                OnCountDownFinished.Invoke();
+            }
+            else
+            {
+                currentCountDownTimer -= Time.deltaTime;
+                OnCountDownUpdate.Invoke((int)currentCountDownTimer);
             }
         }
     }
