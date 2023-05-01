@@ -9,20 +9,16 @@ public class LevelLoader : MonoBehaviour
 
     public float transitionTime = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadNextLevel() {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public void LoadLevelWithIndex(int levelIndex) {
+        StartCoroutine(LoadLevel(levelIndex));
+    }
+
+    public void QuitGame() {
+        Application.Quit();
     }
 
     IEnumerator LoadLevel(int levelIndex) {

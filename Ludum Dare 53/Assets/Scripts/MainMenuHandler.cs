@@ -12,6 +12,7 @@ public class MainMenuHandler : MonoBehaviour
     public GameObject quitButton;
     public GameObject backButton;
     public GameObject optionsMenu;
+    public GameObject howToPlayImage;
 
     public LeanTweenType inTyp;
 
@@ -25,6 +26,14 @@ public class MainMenuHandler : MonoBehaviour
     {
         HideMenu();
         levelLoader.LoadNextLevel();
+    }
+
+    public void ShowExplaination() {
+        howToPlayImage.SetActive(true);
+    }
+
+    public void HideExplaination() {
+        howToPlayImage.SetActive(false);
     }
 
     public void ShowOptions()
