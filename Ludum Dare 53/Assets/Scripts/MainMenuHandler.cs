@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuHandler : MonoBehaviour
 {
+    public LevelLoader levelLoader;
     public GameObject playButton;
     public GameObject optionsButton;
     public GameObject quitButton;
@@ -23,6 +24,7 @@ public class MainMenuHandler : MonoBehaviour
     public void StartGame()
     {
         HideMenu();
+        levelLoader.LoadNextLevel();
     }
 
     public void ShowOptions()
