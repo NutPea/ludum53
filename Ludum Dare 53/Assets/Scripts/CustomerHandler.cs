@@ -26,6 +26,7 @@ public class CustomerHandler : MonoBehaviour
     {
         pickUpCollider.enabled = true;
         killCollider.enabled = false;
+        
         anim ??= GetComponentInChildren<Animator>();
         anim.SetBool("Waiting", true);
     }

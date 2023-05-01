@@ -13,7 +13,7 @@ public class CarPassengerPickUpHandler : MonoBehaviour
     public Transform carPassengerPosition;
     [HideInInspector]public CustomerHandler currentCustomerHandler;
 
-    [HideInInspector] public UnityEvent OnPickUpCustomer = new();
+    [HideInInspector] public UnityEvent<TargetLocationMarker> OnPickUpCustomer = new();
     [HideInInspector] public UnityEvent OnDropCustomer = new();
     public UnityEvent<bool> OnHitEnemy = new();
 
@@ -41,8 +41,6 @@ public class CarPassengerPickUpHandler : MonoBehaviour
         customerHandler.transform.forward = carPassengerPosition.transform.forward;
         customerHandler.transform.localPosition = Vector3.zero;
         hasPassenger = true;
-        
-        OnPickUpCustomer.Invoke();
     }
 
     public void DropPassenger(DropZoneHandler dropZoneHandler)

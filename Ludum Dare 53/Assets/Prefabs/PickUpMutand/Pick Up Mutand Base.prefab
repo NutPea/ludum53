@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1427764730568577564}
   - component: {fileID: 1480177760556747370}
   - component: {fileID: 6782403568300253594}
+  - component: {fileID: 598259538243328339}
   m_Layer: 0
   m_Name: Pick Up Mutand Base
   m_TagString: Untagged
@@ -129,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c332e9c72d3af87449903fef675705f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpCollider: {fileID: 0}
+  killCollider: {fileID: 0}
   pickUpIndicationGameobject: {fileID: 2142453456905846312}
   currentMutantTyp: 0
   OnPickUpEvent:
@@ -139,6 +142,11 @@ MonoBehaviour:
       m_Calls: []
   distanceBeforeDespawn: 50
   anim: {fileID: 0}
+  wrongMutantKillAnimPropability: 0.33
+  rightMutantKillAnimPropability: 0.33
+  flyAwayPartsRigidbodys: []
+  flyAwayPartDestroyTimer: 3
+  flyAwayVelocity: 3
 --- !u!135 &6782403568300253594
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -152,3 +160,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &598259538243328339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3418990218904017426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 753f2bb13d6100345b494f91b42be253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 78912a183d99c9c4ea219db898c1056a, type: 3}
+  image: {fileID: 0}

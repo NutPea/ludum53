@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,23 @@ public class Compass : MonoBehaviour
 
     float compassUnit;
 
-    public TargetLocationMarker test;
+    public GameLoopHandler loopHandler;
+    public CarPassengerPickUpHandler pickUpHandler;
 
+    GameObject newMarker;
+    TargetLocationMarker currentMarker;
     void Start() {
         compassUnit = compassImage.rectTransform.rect.width / 360f;
-        AddLocationMarker(test);
+        loopHandler ??= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameLoopHandler>();
+        loopHandler.OnNewLocationMarker.AddListener(AddLocationMarker);
+        loopHandler.OnArriveCircleChange.AddListener(RemoveLocationMarker);
+
+        pickUpHandler ??= GameObject.FindGameObjectWithTag("Player").GetComponent<CarPassengerPickUpHandler>();
+
+    }
+
+    private void RemoveLocationMarker(GameObject arg0) {
+        Destroy(newMarker);
     }
 
     // Update is called once per frame
@@ -27,15 +40,20 @@ public class Compass : MonoBehaviour
         foreach(TargetLocationMarker marker in locationMarkers) {
             marker.image.rectTransform.anchoredPosition = GetPosOnCompass(marker);
         }
+
+        if (currentMarker != null) {
+            currentMarker.image.rectTransform.anchoredPosition = GetPosOnCompass(currentMarker);
+        }
     }
 
     public void AddLocationMarker(TargetLocationMarker marker) {
-        GameObject newMarker = Instantiate(targetLocationIcon, compassImage.transform);
+        newMarker = Instantiate(targetLocationIcon, compassImage.transform);
         marker.image = newMarker.GetComponent<Image>();
         marker.image.sprite = marker.icon;
 
         locationMarkers.Add(marker);
     }
+
 
     Vector2 GetPosOnCompass(TargetLocationMarker marker) {
         Vector2 camPos = new Vector2(cam.transform.position.x, cam.transform.position.z);

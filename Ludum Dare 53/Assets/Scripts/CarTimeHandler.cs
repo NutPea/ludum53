@@ -22,7 +22,7 @@ public class CarTimeHandler : MonoBehaviour
     [HideInInspector] public UnityEvent<string> OnAddTimeUpdate = new();
     [HideInInspector]public UnityEvent OnTimerHasFinished = new();
 
-    private bool hasBeenCountDown = true;
+    private bool hasBeenCountDown;
     private CarPassengerPickUpHandler pickUpHandler;
 
     void Start()
@@ -32,6 +32,7 @@ public class CarTimeHandler : MonoBehaviour
         pickUpHandler.OnDropCustomer.AddListener(AddTime);
         pickUpHandler.OnPickUpCustomer.AddListener(AddTime);
         currentCountDownTimer = countDownTimer;
+        hasBeenCountDown = false;
     }
 
     
@@ -59,6 +60,7 @@ public class CarTimeHandler : MonoBehaviour
             {
                 hasBeenCountDown = true;
                 OnCountDownFinished.Invoke();
+                Debug.Log("Go!");
             }
             else
             {
