@@ -40,8 +40,6 @@ public class CarTimeHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
         if (hasBeenCountDown)
         {
             if(currentTimer < 0) {

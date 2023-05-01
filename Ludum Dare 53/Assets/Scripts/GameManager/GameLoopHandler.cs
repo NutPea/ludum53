@@ -28,6 +28,8 @@ public class GameLoopHandler : MonoBehaviour
     public float minSpawnDistanceOfEnemys = 20f;
     public float maxSpawnDIstanceEnemys = 40f;
 
+    GameObject currentArriveCircle;
+
 
     void Start()
     {
@@ -37,8 +39,15 @@ public class GameLoopHandler : MonoBehaviour
         }
         player.GetComponent<CarTimeHandler>().OnCountDownFinished.AddListener(SpawnNewCostumer);
         carPassengerHandler = player.GetComponent<CarPassengerPickUpHandler>();
+        carPassengerHandler.OnPickUpCustomer.AddListener(ChangeCompassMarker);
         carPassengerHandler.OnDropCustomer.AddListener(SpawnNewCostumer);
         SpawnEnemysNew();
+    }
+
+    private void ChangeCompassMarker()
+    {
+        Debug.Log("Miep");
+        OnNewLocationMarker.Invoke(currentArriveCircle.GetComponent<TargetLocationMarker>());
     }
 
     // Update is called once per frame
@@ -53,8 +62,8 @@ public class GameLoopHandler : MonoBehaviour
         Transform arrivePos = FindArrivePlace(customerSpawnPos);
         int randomeCustomer = Random.Range(0, customerPrefabs.Count);
 
-        GameObject arriveCircle = GameObject.Instantiate(arrivedCirclePrefab, arrivePos.transform.position, Quaternion.identity);
-        OnArriveCircleChange.Invoke(arriveCircle);
+        currentArriveCircle = GameObject.Instantiate(arrivedCirclePrefab, arrivePos.transform.position, Quaternion.identity);
+        OnArriveCircleChange.Invoke(currentArriveCircle);
 
         GameObject customer = GameObject.Instantiate(customerPrefabs[randomeCustomer], customerSpawnPos.transform.position, Quaternion.identity);
         customer.transform.forward = arrivePos.transform.forward;
@@ -67,12 +76,13 @@ public class GameLoopHandler : MonoBehaviour
 
     Transform FindCustomerPlace()
     {
-        foreach(Transform customerPos in spawnpoints)
+        for(int i = 0; i< spawnpoints.Count; i++)
         {
-            float distanceToPlayer = Vector2.Distance(player.transform.position, customerPos.position);
-            if(distanceToPlayer > minDistanceFromCustomerToPlayer && distanceToPlayer < maxDistanceFromCustomerToPlayer)
+            int randomeIndex = Random.Range(0, spawnpoints.Count);
+            float distanceToPlayer = Vector2.Distance(player.transform.position, spawnpoints[randomeIndex].position);
+            if (distanceToPlayer > minDistanceFromCustomerToPlayer && distanceToPlayer < maxDistanceFromCustomerToPlayer)
             {
-                return customerPos;
+                return spawnpoints[randomeIndex];
             }
         }
         return spawnpoints[0];
@@ -80,17 +90,20 @@ public class GameLoopHandler : MonoBehaviour
 
     Transform FindArrivePlace(Transform customer)
     {
-        foreach (Transform arrivePos in spawnpoints)
+        for(int i = 0; i< spawnpoints.Count; i++)
         {
-            if(customer == arrivePos){
+            int randomeIndex = Random.Range(0, spawnpoints.Count);
+            if (customer == spawnpoints[randomeIndex])
+            {
                 continue;
             }
-            float distanceToPlayer = Vector2.Distance(customer.position, arrivePos.position);
+            float distanceToPlayer = Vector2.Distance(customer.position, spawnpoints[randomeIndex].position);
             if (distanceToPlayer > minDistanceBetweenCustomerandArrive && distanceToPlayer < maxDistanceBetweenCustomerandArrive)
             {
-                return arrivePos;
+                return spawnpoints[randomeIndex];
             }
         }
+
         return spawnpoints[0];
     }
 

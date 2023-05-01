@@ -45,6 +45,7 @@ public class CarController : MonoBehaviour
     float steerInput;
 
     private Rigidbody carRb;
+    private CarTimeHandler timeHandler;
     private bool isBreaking;
     private bool isDrifting;
     public float maxFallOverAngle = 35;
@@ -67,7 +68,7 @@ public class CarController : MonoBehaviour
     public Material brakesOnMaterial;
     public Material brakesOffMaterial;
 
-
+    private bool stopInput;
 
     private void Awake()
     {
@@ -86,6 +87,7 @@ public class CarController : MonoBehaviour
     void Start()
     {
         carRb = GetComponent<Rigidbody>();
+        timeHandler = GetComponent<CarTimeHandler>();
         carRb.centerOfMass = _centerOfMass;
         inputActions.Keyboard.Horizontal.performed += ctx => OnSteer();
         inputActions.Keyboard.Horizontal.canceled += ctx => OnStopSteer();
@@ -95,10 +97,16 @@ public class CarController : MonoBehaviour
         inputActions.Keyboard.ChangeCamera.canceled += ctx => DeactivateFreeLookCam();
 
         inputActions.Keyboard.Break.performed += ((ctx) => {
+            if (stopInput){
+                return;
+            }
             isBreaking = true;
         });
 
         inputActions.Keyboard.Break.canceled += ((ctx) => {
+            if (stopInput){
+                return;
+            }
             isBreaking = false;
         });
 
@@ -108,6 +116,9 @@ public class CarController : MonoBehaviour
         if (freecam){
             cinemachineFreeLook = freecam.GetComponent<CinemachineFreeLook>();
         }
+
+        stopInput = true;
+        timeHandler.OnCountDownFinished.AddListener(() => stopInput = false);
     }
 
     private void OnSteer(){
@@ -215,6 +226,10 @@ public class CarController : MonoBehaviour
     }
     void Move()
     {
+        if (stopInput)
+        {
+            return;
+        }
         if (carRb.velocity.magnitude < extraAcelationVelocity)
         {
             carRb.AddForce(transform.forward * extraAcelationSpeed * moveInput);
@@ -322,11 +337,19 @@ public class CarController : MonoBehaviour
         {
             return;
         }
+        if (stopInput)
+        {
+            return;
+        }
         cinemachineFreeLook.Priority = 15;
     }
 
     private void DeactivateFreeLookCam() {
         if (!cinemachineFreeLook)
+        {
+            return;
+        }
+        if (stopInput)
         {
             return;
         }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Compass : MonoBehaviour
 {
     public GameObject targetLocationIcon;
-    List<TargetLocationMarker> locationMarkers = new List<TargetLocationMarker>();
     public RawImage compassImage;
     public Transform cam;
 
@@ -17,19 +16,22 @@ public class Compass : MonoBehaviour
     public CarPassengerPickUpHandler pickUpHandler;
 
     GameObject newMarker;
-    TargetLocationMarker currentMarker;
-    void Start() {
+    public TargetLocationMarker currentMarker;
+    void Awake() {
+        cam ??= Camera.main.transform;
         compassUnit = compassImage.rectTransform.rect.width / 360f;
         loopHandler ??= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameLoopHandler>();
         loopHandler.OnNewLocationMarker.AddListener(AddLocationMarker);
-        loopHandler.OnArriveCircleChange.AddListener(RemoveLocationMarker);
 
         pickUpHandler ??= GameObject.FindGameObjectWithTag("Player").GetComponent<CarPassengerPickUpHandler>();
 
     }
 
-    private void RemoveLocationMarker(GameObject arg0) {
-        Destroy(newMarker);
+    private void RemoveLocationMarker() {
+        if (newMarker)
+        {
+            Destroy(newMarker);
+        }
     }
 
     // Update is called once per frame
@@ -37,9 +39,6 @@ public class Compass : MonoBehaviour
     {
         compassImage.uvRect = new Rect (cam.localEulerAngles.y / 360f, 0f, 1f, 1f);
 
-        foreach(TargetLocationMarker marker in locationMarkers) {
-            marker.image.rectTransform.anchoredPosition = GetPosOnCompass(marker);
-        }
 
         if (currentMarker != null) {
             currentMarker.image.rectTransform.anchoredPosition = GetPosOnCompass(currentMarker);
@@ -47,11 +46,11 @@ public class Compass : MonoBehaviour
     }
 
     public void AddLocationMarker(TargetLocationMarker marker) {
+        RemoveLocationMarker();
         newMarker = Instantiate(targetLocationIcon, compassImage.transform);
         marker.image = newMarker.GetComponent<Image>();
         marker.image.sprite = marker.icon;
-
-        locationMarkers.Add(marker);
+        currentMarker = marker;
     }
 
 

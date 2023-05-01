@@ -41,6 +41,7 @@ public class CarPassengerPickUpHandler : MonoBehaviour
         customerHandler.transform.forward = carPassengerPosition.transform.forward;
         customerHandler.transform.localPosition = Vector3.zero;
         hasPassenger = true;
+        OnPickUpCustomer.Invoke();
     }
 
     public void DropPassenger(DropZoneHandler dropZoneHandler)
