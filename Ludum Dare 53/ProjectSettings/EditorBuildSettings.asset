@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RealPlayScene.unity
-    guid: c92ffb6be4a89964db0914eb6e6380d6
+    path: Assets/Scenes/MainMenu.unity
+    guid: 74de86b9ac9d55d46bce407fd75dfb1c
+  - enabled: 1
+    path: Assets/Scenes/LukasTestScene.unity
+    guid: 99736ccb2418e454fbd35d057d13867a
   m_configObjects: {}

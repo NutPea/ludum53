@@ -60,7 +60,6 @@ public class CarTimeHandler : MonoBehaviour
             {
                 hasBeenCountDown = true;
                 OnCountDownFinished.Invoke();
-                Debug.Log("Go!");
             }
             else
             {
@@ -69,6 +68,7 @@ public class CarTimeHandler : MonoBehaviour
             }
         }
     }
+ 
 
     public void AddTime()
     {
