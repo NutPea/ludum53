@@ -339,6 +339,8 @@ GameObject:
   - component: {fileID: 6280782830244485679}
   - component: {fileID: 2346298858679756556}
   - component: {fileID: 388207523}
+  - component: {fileID: 6657644821906535359}
+  - component: {fileID: 8366056129125606517}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -446,10 +448,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPassengerPosition: {fileID: 7857658645746499763}
+  currentCustomerHandler: {fileID: 0}
   OnPickUpCustomer:
     m_PersistentCalls:
       m_Calls: []
   OnDropCustomer:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitEnemy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7118601950468870007
@@ -527,6 +533,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6657644821906535359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864881980845569807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11405c60ed2f95141806097a0de954fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPointAmount: 0
+  OnMoneyUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAddMoneyUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveMoneyUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  pickUpAddAmount: 20
+  deliverAddAmount: 100
+  killRightMutant: 50
+  killWrongMutant: 100
+--- !u!114 &8366056129125606517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864881980845569807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1504d0b2697bcd34fa6c08f7858ab0e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &864881980998619342
 GameObject:
   m_ObjectHideFlags: 0
