@@ -51,6 +51,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3960702960415002545, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543890859904307016, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543890859987259751, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543890860097941433, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543890860206091047, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543890860484966735, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543890861220715238, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543890861261836091, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5097039991888855955, guid: 54fdc08e7f37ee843ac234596b3e80f6, type: 3}
       propertyPath: m_Name
       value: Blue Mutand Model

@@ -68,7 +68,7 @@ public class CarController : MonoBehaviour
     public Material brakesOnMaterial;
     public Material brakesOffMaterial;
 
-    private bool stopInput;
+    public bool stopInput;
 
     private void Awake()
     {
@@ -243,7 +243,11 @@ public class CarController : MonoBehaviour
 
     void Steer()
     {
-        foreach(var wheel in wheels)
+        if (stopInput)
+        {
+            return;
+        }
+        foreach (var wheel in wheels)
         {
             if (wheel.axel == Axel.Front)
             {

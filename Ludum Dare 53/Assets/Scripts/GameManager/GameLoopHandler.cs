@@ -29,6 +29,7 @@ public class GameLoopHandler : MonoBehaviour
     public float maxSpawnDIstanceEnemys = 40f;
 
     GameObject currentArriveCircle;
+    public LayerMask groundLayer;
 
 
     void Start()
@@ -46,7 +47,6 @@ public class GameLoopHandler : MonoBehaviour
 
     private void ChangeCompassMarker()
     {
-        Debug.Log("Miep");
         OnNewLocationMarker.Invoke(currentArriveCircle.GetComponent<TargetLocationMarker>());
     }
 
@@ -62,10 +62,29 @@ public class GameLoopHandler : MonoBehaviour
         Transform arrivePos = FindArrivePlace(customerSpawnPos);
         int randomeCustomer = Random.Range(0, customerPrefabs.Count);
 
-        currentArriveCircle = GameObject.Instantiate(arrivedCirclePrefab, arrivePos.transform.position, Quaternion.identity);
+        RaycastHit arriveSpawnHit;
+        Vector3 ArriveSpawnPos = Vector3.zero;
+        if (Physics.Raycast(arrivePos.transform.position, Vector3.down, out arriveSpawnHit, 10f, groundLayer))
+        {
+            ArriveSpawnPos = arriveSpawnHit.point;
+        }
+        else
+        {
+            ArriveSpawnPos = arrivePos.transform.position;
+        }
+
+        currentArriveCircle = GameObject.Instantiate(arrivedCirclePrefab, ArriveSpawnPos, Quaternion.identity);
         OnArriveCircleChange.Invoke(currentArriveCircle);
 
-        GameObject customer = GameObject.Instantiate(customerPrefabs[randomeCustomer], customerSpawnPos.transform.position, Quaternion.identity);
+        RaycastHit customerSpawnHit;
+        Vector3 CustomerSpawnPos = Vector3.zero;
+        if (Physics.Raycast(customerSpawnPos.transform.position, Vector3.down, out customerSpawnHit,10f, groundLayer)){
+            CustomerSpawnPos = customerSpawnHit.point;
+        }
+        else{
+            CustomerSpawnPos = customerSpawnPos.transform.position;
+        }
+        GameObject customer = GameObject.Instantiate(customerPrefabs[randomeCustomer], CustomerSpawnPos, Quaternion.identity);
         customer.transform.forward = arrivePos.transform.forward;
         OnNewLocationMarker.Invoke(customer.GetComponent<TargetLocationMarker>());
 
@@ -118,6 +137,24 @@ public class GameLoopHandler : MonoBehaviour
             {
                 int randomeEnemyIndex = Random.Range(0, enemyObstaclePrefabs.Count);
                 GameObject spawnedEnemy = GameObject.Instantiate(enemyObstaclePrefabs[randomeEnemyIndex], spawnPosition, Quaternion.identity);
+                spawnedEnemy.GetComponent<MutantHandler>().OnKilled.AddListener(SpawnEnemy);
+                spawnedEnemy.transform.parent = transform;
+            }
+        }
+    }
+
+    public void SpawnEnemy()
+    {
+        for (int i = 0; i < spawnpoints.Count; i++)
+        {
+            int randomeIndex = Random.Range(0, spawnpoints.Count);
+            float distanceToPlayer = Vector2.Distance(player.transform.position, spawnpoints[randomeIndex].position);
+            if (distanceToPlayer > minDistanceFromCustomerToPlayer && distanceToPlayer < maxDistanceFromCustomerToPlayer)
+            {
+                int randomeEnemyIndex = Random.Range(0, enemyObstaclePrefabs.Count);
+                GameObject spawnedEnemy = GameObject.Instantiate(enemyObstaclePrefabs[randomeEnemyIndex], spawnpoints[randomeIndex].position, Quaternion.identity);
+                spawnedEnemy.GetComponent<MutantHandler>().OnKilled.AddListener(SpawnEnemy);
+                spawnedEnemy.transform.parent = transform;
             }
         }
     }

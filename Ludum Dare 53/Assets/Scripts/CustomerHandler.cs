@@ -29,6 +29,7 @@ public class CustomerHandler : MonoBehaviour
         
         anim ??= GetComponentInChildren<Animator>();
         anim.SetBool("Waiting", true);
+        hasBeenDelivered = false;
     }
 
     private void Update()

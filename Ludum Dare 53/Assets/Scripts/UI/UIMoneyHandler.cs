@@ -8,6 +8,7 @@ public class UIMoneyHandler : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI addMoneyText;
     public TextMeshProUGUI removeMoneyText;
+    public TextMeshProUGUI scoreMoneyText;
 
     public CarMoneyHandler carMoneyHandler;
     public float goAwayTimer = 2f;
@@ -18,6 +19,7 @@ public class UIMoneyHandler : MonoBehaviour
         carMoneyHandler.OnMoneyUpdate.AddListener((amount) =>
         {
             moneyText.text = amount.ToString();
+            scoreMoneyText.text = amount.ToString();
         });
 
         carMoneyHandler.OnAddMoneyUpdate.AddListener((amount) =>

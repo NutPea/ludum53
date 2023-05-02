@@ -59,8 +59,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   flyAwayPartDestroyTimer: 3
-  flyWayPushPower: 5
+  flyWayPushPower: 10
   anim: {fileID: 0}
+  OnKilled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &4095107046313941507
 NavMeshAgent:
   m_ObjectHideFlags: 0

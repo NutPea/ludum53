@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class MutantHandler : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class MutantHandler : MonoBehaviour
     public float flyWayPushPower = 3f;
 
     public Animator anim;
+    public UnityEvent OnKilled = new();
 
 
     private void Start()
@@ -71,6 +73,7 @@ public class MutantHandler : MonoBehaviour
             flyAwayDirection = flyAwayDirection.normalized;
             rigidbody.AddForce(flyAwayDirection * flyWayPushPower + Vector3.up, ForceMode.Impulse);
         }
+        OnKilled.Invoke();
         Destroy(gameObject);
     }
 }

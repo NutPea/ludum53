@@ -17,6 +17,11 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(levelIndex));
     }
 
+    public void LoadSameIndex()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+    }
+
     public void QuitGame() {
         Application.Quit();
     }
