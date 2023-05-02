@@ -129,6 +129,10 @@ PrefabInstance:
       propertyPath: currentMutantTyp
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2291743852138514175, guid: 900035a61e98edf4f88244932522c164, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3418990218904017426, guid: 900035a61e98edf4f88244932522c164, type: 3}
       propertyPath: m_Name
       value: Blue Mutand Pick Up Variant
