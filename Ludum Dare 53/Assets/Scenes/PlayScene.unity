@@ -6829,7 +6829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3010687737486709336, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: amountToAddPerPassenger
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3084351461319036170, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_Name
@@ -6933,7 +6933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5404959785065041312, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.12684144
+      value: 0.12684143
       objectReference: {fileID: 0}
     - target: {fileID: 5404959785347895612, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalPosition.x

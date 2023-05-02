@@ -112,7 +112,7 @@ public class GameLoopHandler : MonoBehaviour
                 return spawnpoints[randomeIndex];
             }
         }
-        return spawnpoints[0];
+        return spawnpoints[Random.Range(0, spawnpoints.Count)];
     }
 
     Transform FindArrivePlace(Transform customer)
@@ -131,7 +131,8 @@ public class GameLoopHandler : MonoBehaviour
             }
         }
 
-        return spawnpoints[0];
+
+        return spawnpoints[Random.Range(0, spawnpoints.Count)];
     }
 
     public void SpawnEnemysNew()
