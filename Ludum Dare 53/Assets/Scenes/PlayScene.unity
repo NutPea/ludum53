@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 99736ccb2418e454fbd35d057d13867a
+  m_OcclusionCullingData: {fileID: 36300000, guid: 5cab9870cbf9cb24aaeda4df619d20b7, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -6701,7 +6701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3010687737486709336, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: amountToAddPerPassenger
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3084351461319036170, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_Name
