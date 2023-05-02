@@ -155,7 +155,9 @@ public class GameLoopHandler : MonoBehaviour
                 GameObject spawnedEnemy = GameObject.Instantiate(enemyObstaclePrefabs[randomeEnemyIndex], spawnpoints[randomeIndex].position, Quaternion.identity);
                 spawnedEnemy.GetComponent<MutantHandler>().OnKilled.AddListener(SpawnEnemy);
                 spawnedEnemy.transform.parent = transform;
+                return;
             }
+           
         }
     }
 
