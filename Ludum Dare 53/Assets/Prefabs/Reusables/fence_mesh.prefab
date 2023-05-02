@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7530336435035553519}
   - component: {fileID: 5721214604943116837}
   - component: {fileID: 501868845643649418}
+  - component: {fileID: 6491050278400250970}
   m_Layer: 0
   m_Name: fence_mesh
   m_TagString: Untagged
@@ -92,8 +93,21 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6081313252208733168}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.051163882, y: 0.0020588848, z: 0.025606314}
   m_Center: {x: 0.00012648014, y: 0.0007373595, z: -0.010117124}
+--- !u!114 &6491050278400250970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081313252208733168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f04b739e71f6a48b51846003b57894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyParticle: {fileID: 8721854295047851058, guid: 2036e27b727db394596eccbce459b3cb, type: 3}
