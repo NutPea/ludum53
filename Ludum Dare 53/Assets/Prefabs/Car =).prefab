@@ -433,8 +433,9 @@ MonoBehaviour:
   changedDirectionForward: 0
   freecam: {fileID: 0}
   carRenderer: {fileID: 298552718230603891}
-  brakesOnMaterial: {fileID: 2100000, guid: f22e47105ef5aaa489f3a541197a1604, type: 2}
-  brakesOffMaterial: {fileID: 2100000, guid: 82ff29e2406c5d64093f318452b45d6d, type: 2}
+  brakesOnMaterial: {fileID: 2100000, guid: f9348959ca1d2394cb0f08a8d554b815, type: 2}
+  brakesOffMaterial: {fileID: 2100000, guid: 9124d52b25a4feb4c9ab8a24c91df12a, type: 2}
+  stopInput: 0
 --- !u!114 &5157807402059601238
 MonoBehaviour:
   m_ObjectHideFlags: 0
