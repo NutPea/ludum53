@@ -59,7 +59,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   flyAwayPartDestroyTimer: 3
-  flyWayPushPower: 10
+  flyWayPushPower: 15
   anim: {fileID: 0}
   OnKilled:
     m_PersistentCalls:

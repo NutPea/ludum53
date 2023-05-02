@@ -30,6 +30,8 @@ public class GameLoopHandler : MonoBehaviour
 
     GameObject currentArriveCircle;
     public LayerMask groundLayer;
+    private int currentRound = 0;
+    public float difficultAmount = 10;
 
 
     void Start()
@@ -43,6 +45,7 @@ public class GameLoopHandler : MonoBehaviour
         carPassengerHandler.OnPickUpCustomer.AddListener(ChangeCompassMarker);
         carPassengerHandler.OnDropCustomer.AddListener(SpawnNewCostumer);
         SpawnEnemysNew();
+        currentRound = 0;
     }
 
     private void ChangeCompassMarker()
@@ -88,6 +91,11 @@ public class GameLoopHandler : MonoBehaviour
         customer.transform.forward = arrivePos.transform.forward;
         OnNewLocationMarker.Invoke(customer.GetComponent<TargetLocationMarker>());
 
+        minDistanceFromCustomerToPlayer += currentRound * difficultAmount/2;
+        maxDistanceFromCustomerToPlayer += currentRound * difficultAmount/2;
+        minDistanceBetweenCustomerandArrive += currentRound * difficultAmount;
+        maxDistanceBetweenCustomerandArrive += currentRound * difficultAmount;
+        currentRound++;
     }
 
 
