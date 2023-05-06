@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 5.3
+  m_AmbientIntensity: 3.55
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.13349947, g: 0.20251611, b: 0.3773585, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 102c3f2cfdcb3d64199f97f4f9aa3d46, type: 2}
@@ -7315,19 +7315,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5404959784500303287, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000029802322
+      value: -0.000000029802322
       objectReference: {fileID: 0}
     - target: {fileID: 5404959784500303287, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000037252903
+      value: -0.000000007450581
       objectReference: {fileID: 0}
     - target: {fileID: 5404959784500303287, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99433583
+      value: -0.9943359
       objectReference: {fileID: 0}
     - target: {fileID: 5404959784500303287, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.10628404
+      value: 0.10628402
       objectReference: {fileID: 0}
     - target: {fileID: 5404959785065041312, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7351,7 +7351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5404959785065041312, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.12684143
+      value: 0.12684144
       objectReference: {fileID: 0}
     - target: {fileID: 5404959785347895612, guid: 1adf05781974ea54183e38c171990b28, type: 3}
       propertyPath: m_LocalPosition.x
